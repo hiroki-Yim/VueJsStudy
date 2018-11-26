@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+</head>
+
+<body>
+    <div id="m-l-c">
+        <button>set components</button>
+        <my-local-components></my-local-components>
+        <my-global-components></my-global-components>
+    </div>
+    <hr>
+    <div id="app1">
+        <h3>first instance area</h3>
+        <my-local-components></my-local-components>
+        <my-global-components></my-global-components>
+    </div>
+    <hr>
+    <div id="app2">
+        <h3>second instance area</h3>
+        <my-local-components></my-local-components>
+        <my-global-components></my-global-components>
+    </div>
+</body>
+<script>
+    /*
+    전역 컴포넌트는 인스턴스를 새로 생성할 때마다 인스턴스에 components속성으로 등록할 필요없이
+    한번 등록하면 어느 인스턴스에서든지 사용할 수 있음.
+    반대로 지역 컴포넌트는 새 인스턴스를 생성할 때마다 등록해 주어야함.
+    */
+    Vue.component('my-global-components', { //set global component
+        template: '<div>Global Components</div>'
+    })
+
+    // local component's template
+    var cmp = {
+        template: '<div>Local Components</div>'
+    };
+
+
+    new Vue({
+        el: '#app1',
+        // set local component
+        components: {
+            'my-local-components': cmp,
+        }
+    });
+    //second instance
+    new Vue({
+        el: '#app2'
+    });
+</script>
+
+</html>

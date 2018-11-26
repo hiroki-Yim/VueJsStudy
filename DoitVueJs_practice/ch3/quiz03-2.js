@@ -1,0 +1,21 @@
+Vue.component('todo-footer', {
+    template: '<p>This is another global child component</p>'
+});
+
+var cmp = {
+    template: '<p>This is another local child component</p>'
+};
+
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: "This is parent component"
+    }
+})
+
+new Vue({
+    el: '#app',
+    components: {
+        "todo-list": cmp
+    }
+});
