@@ -12,14 +12,16 @@
         <my-local-components></my-local-components>
         <my-global-components></my-global-components>
     </div>
-    <hr>
+    <hr />
     <div id="app1">
         <h3>first instance area</h3>
         <my-local-components></my-local-components>
         <my-global-components></my-global-components>
     </div>
-    <hr>
+    <hr />
+    <!-- 부모 컴포넌트 -->
     <div id="app2">
+        <!-- 자식 컴포넌트 -->
         <h3>second instance area</h3>
         <my-local-components></my-local-components>
         <my-global-components></my-global-components>
@@ -31,26 +33,26 @@
     한번 등록하면 어느 인스턴스에서든지 사용할 수 있음.
     반대로 지역 컴포넌트는 새 인스턴스를 생성할 때마다 등록해 주어야함.
     */
-    Vue.component('my-global-components', { //set global component
-        template: '<div>Global Components</div>'
-    })
+    Vue.component("my-global-components", {
+        //set global component
+        template: "<div>Global Components</div>"
+    });
 
     // local component's template
     var cmp = {
-        template: '<div>Local Components</div>'
+        template: "<div>Local Components</div>"
     };
 
-
     new Vue({
-        el: '#app1',
+        el: "#app1",
         // set local component
         components: {
-            'my-local-components': cmp,
+            "my-local-components": cmp
         }
     });
     //second instance
     new Vue({
-        el: '#app2'
+        el: "#app2"
     });
 </script>
 
